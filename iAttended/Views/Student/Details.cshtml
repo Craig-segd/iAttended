@@ -1,0 +1,36 @@
+﻿@model iAttended.Models.ViewModels.StudentViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+@{
+    var id = Convert.ToInt32(ViewData["id"]);
+}
+
+<h2>Details for @Model.Student.Single(c => c.Id == id).Name</h2>
+
+<div class="studentContainer">
+    <div class="panel panel-primary panel-space">
+        <div class="panel-heading">Student Details</div>
+        <div class="panel-body">
+            <p>Full Name: @Model.Student.Single(c => c.Id == id).Name</p>
+            <p>Student Number: @id</p>
+        </div>
+    </div>
+    <div class="panel panel-primary panel-space">
+        <div class="panel-heading">Courses Enrolled</div>
+        <div class="panel-body">
+            @foreach (var student in Model.Student)
+            {
+                foreach (var course in student.Course)
+                {
+                    <p>@course.Title</p>
+
+                }
+
+            }
+        </div>
+    </div>
+</div>
+
+@Html.ActionLink("Back to Students", "Index")

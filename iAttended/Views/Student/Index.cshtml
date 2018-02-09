@@ -1,0 +1,34 @@
+﻿@model iAttended.Models.ViewModels.StudentViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<br/>
+<p class="alert alert-info">Student Details</p>
+
+<table id="rentals" class="table table-bordered table-responsive table-hover">
+    <thead>
+    <tr>
+        <th>Student Name</th>
+        <th>Date Of Birth</th>
+        <th>Gender</th>
+        <th>Email Address</th>
+        <th>Contact Number</th>
+        <th>Details</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Student)
+    {
+        <tr>
+            <td>@Html.DisplayFor(item => student.Name)</td>
+            <td>@Html.DisplayFor(item => student.DateOfBirth)</td>
+            <td>@Html.DisplayFor(item => student.Gender)</td>
+            <td>@Html.DisplayFor(item => student.EmailAddress)</td>
+            <td>@Html.DisplayFor(item => student.ContactNumber)</td>
+            <td>@Html.ActionLink("Details", "Details", new { id = student.Id })</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
